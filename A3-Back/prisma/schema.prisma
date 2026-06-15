@@ -14,19 +14,20 @@ model Livro {
   id        Int       @id @default(autoincrement()) 
   isbn      String    
   titulo    String    
-  autor     String?  
+  autor     String?   
   capaUrl   String?   
-  status    String    @default("Disponivel") 
-  
+  sinopse   String?   
+  status    String    @default("Disponivel")  
   reservas  Reserva[]
 }
 
 model Reserva {
-  id            Int      @id @default(autoincrement())
-  livroId       Int      
-  cpfLeitor     String  
+  id              Int      @id @default(autoincrement())
+  livroId         Int      
+  nomeLeitor      String   
+  cpfLeitor       String  
   telefoneContato String?
-  dataReserva   DateTime @default(now()) 
-  statusReserva String   @default("Pendente") 
-  livro         Livro    @relation(fields: [livroId], references: [id], onDelete: Cascade)
+  dataReserva     DateTime @default(now()) 
+  statusReserva   String   @default("Pendente") 
+  livro           Livro    @relation(fields: [livroId], references: [id], onDelete: Cascade)
 }
