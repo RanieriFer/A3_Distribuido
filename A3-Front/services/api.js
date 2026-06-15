@@ -16,4 +16,20 @@ export const api = {
     });
     return response;
   },
+
+  deletarLivro: async (id) => {
+    const response = await fetch(`${BASE_URL}/livros/${id}`, {
+      method: "DELETE",
+    });
+    return response.json();
+  },
+
+  atualizarLivro: async (id, dadosAtualizados) => {
+    const response = await fetch(`${BASE_URL}/livros/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(dadosAtualizados),
+    });
+    return response.json();
+  },
 };
