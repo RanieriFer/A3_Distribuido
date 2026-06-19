@@ -1,0 +1,61 @@
+// prisma/schema.prisma
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  ADMIN
+  CLIENTE
+}
+
+
+model Usuario {
+  id        Int       @id @default(autoincrement())
+  email     String    @unique
+  senha     String   
+  nome      String
+  cpf       String?    @unique
+  telefone  String?
+  role      Role      @default(CLIENTE) 
+  createdAt DateTime  @default(now())
+
+  reservas  Reserva[]
+}
+
+// 3. TABELA DE LIVROS (Atualizada)
+model Livro {
+  id        Int       @id @default(autoincrement()) 
+  isbn      String
+  titulo    String
+  autor     String?
+  capaUrl   String?
+  sinopse   String?
+  status    String    @default("DISPONIVEL") 
+
+  reservas  Reserva[]
+}
+
+model Reserva {
+  id              Int      @id @default(autoincrement())
+  livroId         Int
+  usuarioId       Int      
+  dataReserva     DateTime @default(now()) 
+  statusReserva   String   @default("PENDENTE") 
+
+  livro           Livro    @relation(fields: [livroId], references: [id], onDelete: Cascade)
+  usuario         Usuario  @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+}
+
+
+model Notificacao {
+  id        Int      @id @default(autoincrement())
+  mensagem  String
+  lida      Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
