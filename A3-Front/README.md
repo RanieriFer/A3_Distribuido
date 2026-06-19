@@ -29,38 +29,14 @@ NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET="SEU_PRESET"
 
 ## 📦 Como Instalar e Executar
 
-Certifique-se de que o seu terminal está aberto **dentro da pasta `frontend`** antes de escolher uma das opções abaixo:
-
-### Opção 1: Instalação do Zero (npx create-next-app)
-Para reconstruir a estrutura do zero diretamente dentro desta pasta, rode o comando usando o ponto (`.`):
+Certifique-se de que o seu terminal está aberto **dentro da pasta `frontend`** e execute os comandos abaixo para rodar o projeto:
 
 ```bash
-npx create-next-app@latest .
-```
-
-Responda às configurações do assistente exatamente assim:
-* TypeScript? **Yes**
-* ESLint? **Yes**
-* Tailwind CSS? **Yes**
-* `src/` directory? **No**
-* App Router? **Yes**
-* Customize import alias (`@/*`)? **No**
-
-Após a instalação terminar, inicie o servidor:
-```bash
-npm run dev
-```
-
----
-
-### Opção 2: Rodar o Projeto com os Arquivos Existentes
-Se você acabou de clonar o repositório e os arquivos já estão na pasta, basta rodar:
-
-```bash
+# 1. Instala todas as dependências necessárias do projeto
 npm install
+
+# 2. Inicia o servidor de desenvolvimento
 npm run dev
 ```
 
----
-
-Após executar a Opção 1 ou a Opção 2, acesse no seu navegador: `http://localhost:3000/auth/login`
+Após iniciar o servidor, acesse no seu navegador: `http://localhost:3000/auth/login`
